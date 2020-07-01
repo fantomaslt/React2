@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Aux, { Props } from './hoc/Aux';
 
-class App extends Component<Props> {
+class App extends Component {
   render() {
     return (
       <div>

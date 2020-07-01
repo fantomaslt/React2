@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 interface IngredProps {
-  salad: number;
-  bacon: number;
-  cheese: number;
-  meat: number;
-  //   [key]: number;
-}
-interface IngredType extends IngredProps {
-  ingredients: IngredProps;
+  ingredients: {
+    salad: number;
+    bacon: number;
+    cheese: number;
+    meat: number;
+    [key: number]: string;
+  };
+  label?: string;
+  type?: string;
+  totalPrice: number;
 }
 
-class BurgerBuilder extends Component<IngredProps> {
+interface ingredientsCostTypes {
+  salad: number;
+  cheese: number;
+  meat: number;
+  bacon: number;
+  [key: string]: number;
+}
+
+interface ccc {
+  salad: string;
+  cheese: string;
+  meat: string;
+  bacon: string;
+}
+interface disabledInfo {
+  [key: string]: number;
+}
+
+const INGREDIENT_PRICES: ingredientsCostTypes = {
+  salad: 0.5,
+  cheese: 0.4,
+  meat: 1.3,
+  bacon: 0.7,
+};
+class BurgerBuilder extends Component<{}, IngredProps> {
   state = {
     ingredients: {
       salad: 0,
@@ -21,13 +48,67 @@ class BurgerBuilder extends Component<IngredProps> {
       cheese: 0,
       meat: 0,
     },
+    purchasable: false,
+    totalPrice: 4,
   };
 
+  updatePurchaseState = (ingredients: { [x: string]: any }) => {
+    const sum = Object.keys(ingredients)
+      .map((igKey) => {
+        return ingredients[igKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+    return sum > 0;
+  };
+
+  addIngredientHandler = (type: keyof ccc) => {
+    const oldCount = this.state.ingredients[type];
+    const updatedCount = oldCount + 1;
+    const updatedIngredients = {
+      ...this.state.ingredients,
+    };
+    updatedIngredients[type] = updatedCount;
+    const priceAddition = INGREDIENT_PRICES[type];
+    const oldPrice = this.state.totalPrice;
+    const newPrice = oldPrice + priceAddition;
+    this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
+    this.updatePurchaseState();
+  };
+  removeIngredientHandler = (type: keyof ccc) => {
+    const oldCount = this.state.ingredients[type];
+    if (oldCount < 0) {
+      return;
+    }
+    const updatedCount = oldCount - 1;
+    const updatedIngredients = {
+      ...this.state.ingredients,
+    };
+    updatedIngredients[type] = updatedCount;
+    const priceDeduction = INGREDIENT_PRICES[type];
+    const oldPrice = this.state.totalPrice;
+    const newPrice = oldPrice + priceDeduction;
+    this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
+    this.updatePurchaseState();
+  };
   render() {
+    const disabledInfo: { [key: string]: number | boolean } = {
+      ...this.state.ingredients,
+    };
+    for (let key in disabledInfo) {
+      disabledInfo[key] = disabledInfo[key] <= 0;
+    }
     return (
       <Aux>
         <Burger ingredients={this.state.ingredients} />
-        <div>Biuld Controls</div>
+        <BuildControls
+          ingredientAdded={this.addIngredientHandler}
+          ingredientRemoved={this.removeIngredientHandler}
+          disabled={disabledInfo}
+          purchasable={this.state.purchasable}
+          price={this.state.totalPrice}
+        />
       </Aux>
     );
   }
