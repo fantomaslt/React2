@@ -7,7 +7,7 @@ export interface PropsBuld {
   removed: (event: React.MouseEvent<HTMLButtonElement>) => {};
   disabled?: boolean | number;
   purchasable?: boolean;
-
+  type?: string;
   key: string;
   label: string;
 }

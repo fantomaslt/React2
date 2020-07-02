@@ -1,8 +1,6 @@
 import React from 'react';
-import Aux, { Props } from '../../hoc1/AuxA';
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
-import { array, number } from 'prop-types';
 
 // import { string } from 'prop-types';
 
