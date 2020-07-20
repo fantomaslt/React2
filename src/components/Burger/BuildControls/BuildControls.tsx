@@ -4,8 +4,8 @@ import BuildControl from './BuildControl/BuildControl';
 
 interface PropsBuildContrs {
   // purchasable: boolean;
-  ingredientAdded: Function;
-  ingredientRemoved: Function;
+  ingredientAdded: (argumentasKurisAteinaIFunkcija: string) => void;
+  ingredientRemoved: (argumentasKurisAteinaIFunkcija: string) => void;
   type?: string | undefined;
   disabled: { [key: string]: number | boolean };
   price: number;

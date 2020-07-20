@@ -7,6 +7,7 @@ import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { burgerBuilderReducerProps } from '../../store/reducers/burgerBuilder';
+import { Dispatch } from 'redux';
 // import { ThunkDispatch } from 'redux-thunk';
 // import { ActionTypesS } from '../../store/actions/actionTypes';
 // import { Dispatch } from 'redux';
@@ -22,7 +23,7 @@ export interface OrdersStatePro {
   ];
 
   loading: boolean;
-  onFetchOrders: Function;
+  onFetchOrders: () => void;
 }
 class Orders extends Component<OrdersStatePro> {
   state = {};
@@ -54,7 +55,7 @@ const mapStateToProps = (state: burgerBuilderReducerProps) => {
 //   return { onFetchOrders: () => dispatch(actions.fetchOrders()) };
 // };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onFetchOrders: () => dispatch(actions.fetchOrders()),
   };

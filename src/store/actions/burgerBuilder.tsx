@@ -37,7 +37,7 @@ export const FetchIngredientsFailed = () => {
 };
 
 // Fetching Loading Data/Ingredients
-export const initIngredients = () => {
+export const initIngredients: Function = () => {
   return (dispach: Dispatch) => {
     axios
       .get('https://react-my-burger-aabb3.firebaseio.com/ingredients.json')

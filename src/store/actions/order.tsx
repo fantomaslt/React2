@@ -87,13 +87,12 @@ export const fetchOrderStart = () => {
 
 // async code ///////////////
 
-export const fetchOrders = () => {
+export const fetchOrders: Function = () => {
   return (dispatch: Dispatch) => {
     dispatch(fetchOrderStart());
     axios
       .get('/orders.json')
       .then((res) => {
-
         const fetchedOrders = [];
         for (let key in res.data) {
           fetchedOrders.push({

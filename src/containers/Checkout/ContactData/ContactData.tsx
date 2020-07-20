@@ -12,7 +12,6 @@ import * as actions from '../../../store/actions/index';
 import { burgerBuilderReducerProps } from '../../../store/reducers/burgerBuilder';
 
 interface OwnProps extends RouteComponentProps {
-  // onOrderBurger: Function;
   onOrderBurger: (x: OrderDataProps) => void;
 }
 

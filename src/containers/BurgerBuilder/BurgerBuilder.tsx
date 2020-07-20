@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 // import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions/index';
 import { burgerBuilderReducerProps } from '../../store/reducers/burgerBuilder';
+import { Dispatch } from 'redux';
 export interface IngredPropsBurgerBuilder extends RouteComponentProps {
   ings: IngredientBurgerBuilder;
   label?: string;
@@ -20,8 +21,8 @@ export interface IngredPropsBurgerBuilder extends RouteComponentProps {
   purchasing: boolean;
   loading: boolean;
   error: boolean;
-  onIngredientAdded: Function;
-  onIngredientRemoved: Function;
+  onIngredientAdded: () => void;
+  onIngredientRemoved: () => void;
   onInitIngredients: () => void;
   onInitPurchase: () => void;
   price: number;
@@ -132,7 +133,7 @@ const mapStateToProps = (state: burgerBuilderReducerProps) => {
     error: state.burgerBuilder.error,
   };
 };
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onIngredientAdded: (ingName: string) =>
       dispatch(actions.addIngredient(ingName)),

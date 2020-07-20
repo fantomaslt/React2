@@ -22,7 +22,7 @@ import orderReducer from './store/reducers/order';
 
 // // sita exporta panaudojama prie dispathThunk aprasydami tipa
 
-// export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>;
 
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

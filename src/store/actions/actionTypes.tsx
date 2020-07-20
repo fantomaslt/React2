@@ -76,7 +76,7 @@ interface AllRandomProps {
   ingredientName: string;
   orders: [];
 }
-
+// -------------------------------------------------------
 export type ActionTypesS =
   | AddIngredientAction
   | RemoveIngredientAction
