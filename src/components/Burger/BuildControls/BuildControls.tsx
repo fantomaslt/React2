@@ -3,7 +3,7 @@ import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
 
 interface PropsBuildContrs {
-  purchasable: boolean;
+  // purchasable: boolean;
   ingredientAdded: Function;
   ingredientRemoved: Function;
   type?: string | undefined;
@@ -29,14 +29,14 @@ const buildControls = (props: PropsBuildContrs) => (
         key={ctrl.label}
         label={ctrl.label}
         type={ctrl.type}
-        added={() => props.ingredientAdded(ctrl.type)}
-        removed={() => props.ingredientRemoved(ctrl.type)}
+        added={async () => props.ingredientAdded(ctrl.type)}
+        removed={async () => props.ingredientRemoved(ctrl.type)}
         disabled={props.disabled[ctrl.type]}
       />
     ))}
     <button
       className={classes.OrderButton}
-      disabled={props.purchasable}
+      // disabled={props.purchasable}
       onClick={props.ordered}
     >
       ORDER NOW

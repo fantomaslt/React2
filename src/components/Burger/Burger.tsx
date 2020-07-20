@@ -1,24 +1,15 @@
 import React from 'react';
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
+import { IngredientBurgerBuilder } from '../../containers/BurgerBuilder/BurgerBuilder';
 
 // import { string } from 'prop-types';
 
-interface TypeProps {
-  // type?: string;
-  salad: number;
-  bacon: number;
-  cheese: number;
-  meat: number;
-
-  [index: string]: number;
+export interface TypeProps {
+  ingredients: IngredientBurgerBuilder;
 }
 
-interface aaa {
-  ingredients: TypeProps;
-}
-
-const burger = (props: aaa) => {
+const burger = (props: TypeProps) => {
   // is objekto perdaro i array
   let transformedIngredients = Object.keys(props.ingredients)
     .map((igKey) => {

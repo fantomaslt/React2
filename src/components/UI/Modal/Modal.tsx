@@ -4,17 +4,16 @@ import Aux from '../../../hoc1/AuxA/AuxA';
 import Backdrop from '../Backdrop/Backdrop';
 
 interface modalProps {
-  show: boolean;
-  children: ReactNode;
+  show: boolean | string | undefined;
+  children: React.ReactNode;
   modalClosed: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-class Modal extends Component<modalProps, {}> {
-  shouldComponentUpdate(
-    nextProps: { show: boolean; children: React.ReactNode },
-    nextState: boolean
-  ) {
-    console.log(nextState);
+class Modal extends Component<modalProps> {
+  shouldComponentUpdate(nextProps: {
+    show: boolean | undefined | string;
+    children: React.ReactNode;
+  }) {
     return (
       nextProps.show !== this.props.show ||
       nextProps.children !== this.props.children
