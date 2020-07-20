@@ -138,7 +138,7 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(actions.addIngredient(ingName)),
     onIngredientRemoved: (ingName: string) =>
       dispatch(actions.removeIngredient(ingName)),
-    // initIngredients pareina s actions/index failo
+    // initIngredients pareina is actions/index failo
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPurchase: () => dispatch(actions.purchaseInit()),
   };

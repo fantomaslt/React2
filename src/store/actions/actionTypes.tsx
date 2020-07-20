@@ -13,81 +13,68 @@ export const FETHC_ORDERS_START = 'FETHC_ORDERS_START';
 export const FETHC_ORDERS_SUCCESS = 'FETHC_ORDERS_SUCCESS';
 export const FETHC_ORDERS_FAIL = 'FETHC_ORDERS_FAIL';
 
-interface FetchOrdersFailAction extends test {
+interface FetchOrdersFailAction extends AllRandomProps {
   type: typeof FETHC_ORDERS_FAIL;
-  orders: [];
   ingredients: ingredientsCostTypes;
 }
 
-interface FetchOrdersSuccesAction extends test {
-  orders: string;
+interface FetchOrdersSuccesAction extends AllRandomProps {
   type: typeof FETHC_ORDERS_SUCCESS;
-
   ingredients: ingredientsCostTypes;
 }
 
-interface FetchOrdersStatrtAction extends test {
+interface FetchOrdersStatrtAction extends AllRandomProps {
   type: typeof FETHC_ORDERS_START;
-
   ingredients: ingredientsCostTypes;
-  orders: [];
 }
 
-interface PurchaseInitAction extends test {
+interface PurchaseInitAction extends AllRandomProps {
   type: typeof PURCHASE_INIT;
   purchased: boolean;
-  orders: [];
-
   ingredients: ingredientsCostTypes;
 }
 
-interface PurchaseBurgerStartAction extends test {
+interface PurchaseBurgerStartAction extends AllRandomProps {
   type: typeof PURCHASE_BURGER_START;
-  orders: [];
 
   ingredients: ingredientsCostTypes;
 }
-interface PurchaseBurgerFailAction extends test {
+interface PurchaseBurgerFailAction extends AllRandomProps {
   type: typeof PURCHASE_BURGER_FAIL;
-  orders: [];
   ingredients: ingredientsCostTypes;
 }
-interface PurchaseBurgerSuccessAction extends test {
+interface PurchaseBurgerSuccessAction extends AllRandomProps {
   type: typeof PURCHASE_BURGER_SUCCESS;
-  orders: [];
+
   ingredients: ingredientsCostTypes;
 }
 
-interface AddIngredientAction extends test {
+interface AddIngredientAction extends AllRandomProps {
   type: typeof ADD_INGREDIENT;
-
   ingredients: ingredientsCostTypes;
-
-  orders: [];
 }
 
-interface RemoveIngredientAction extends test {
+interface RemoveIngredientAction extends AllRandomProps {
   type: typeof REMOVE_INGREDIENT;
-  orders: [];
+
   ingredients: ingredientsCostTypes;
 }
-interface SetIngredientsAction extends test {
+interface SetIngredientsAction extends AllRandomProps {
   type: typeof SET_INGREDIENTS;
   ingredients: ingredientsCostTypes;
-  orders: [];
 }
 
-interface FetchIngredientsFailedAction extends test {
+interface FetchIngredientsFailedAction extends AllRandomProps {
   type: typeof FETCH_INGREDIENTS_FAILED;
   ingredients: ingredientsCostTypes;
-  orders: [];
 }
 
-interface test {
+interface AllRandomProps {
   orderData: string;
   order: string;
   orderId: string;
   ingredientName: string;
+  orders: [];
 }
 
 export type ActionTypesS =
