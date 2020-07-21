@@ -1,15 +1,15 @@
+import { Dispatch } from 'redux';
+import axios from '../../axios-orders';
+import { ingredientsCostTypes } from '../../containers/BurgerBuilder/BurgerBuilder';
 import {
-  PURCHASE_BURGER_SUCCESS,
+  FETHC_ORDERS_FAIL,
+  FETHC_ORDERS_START,
+  FETHC_ORDERS_SUCCESS,
   PURCHASE_BURGER_FAIL,
   PURCHASE_BURGER_START,
+  PURCHASE_BURGER_SUCCESS,
   PURCHASE_INIT,
-  FETHC_ORDERS_SUCCESS,
-  FETHC_ORDERS_START,
-  FETHC_ORDERS_FAIL,
 } from '../actions/actionTypes';
-import axios from '../../axios-orders';
-import { Dispatch } from 'redux';
-import { ingredientsCostTypes } from '../../containers/BurgerBuilder/BurgerBuilder';
 
 export const purchaseBurgerSuccess = (id: string, orderData: string) => {
   return {
