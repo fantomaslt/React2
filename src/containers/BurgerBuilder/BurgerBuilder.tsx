@@ -16,6 +16,7 @@ import { burgerBuilderReducerProps } from '../../store/reducers/burgerBuilder';
 import { Dispatch } from 'redux';
 export interface IngredPropsBurgerBuilder extends RouteComponentProps {
   ings: IngredientBurgerBuilder;
+  ingredients: IngredientBurgerBuilder;
   label?: string;
   type?: string;
   purchasing: boolean;
@@ -26,6 +27,7 @@ export interface IngredPropsBurgerBuilder extends RouteComponentProps {
   onInitIngredients: () => void;
   onInitPurchase: () => void;
   price: number;
+  purchasable: boolean;
 }
 
 export interface ingredientsCostTypes {
@@ -97,7 +99,7 @@ class BurgerBuilder extends Component<IngredPropsBurgerBuilder> {
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
             price={this.props.price}
-            // purchasable={this.state.updatePurchaseState(this.props.ings)}
+            purchasable={this.updatePurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}
           />
         </Aux>

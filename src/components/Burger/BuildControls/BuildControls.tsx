@@ -3,7 +3,7 @@ import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
 
 interface PropsBuildContrs {
-  // purchasable: boolean;
+  purchasable: boolean;
   ingredientAdded: (argumentasKurisAteinaIFunkcija: string) => void;
   ingredientRemoved: (argumentasKurisAteinaIFunkcija: string) => void;
   type?: string | undefined;
